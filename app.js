@@ -14,37 +14,54 @@ computerScorediv.innerHTML = computerScore;
 const userChoice = [rock, paper, scissors]
 let items = ["rock", "paper", "scissors"];
 let computerChoice = items[Math.floor(Math.random() * 3)];
-let rounds = 0;
+let rounds = 1;
 
 for (let i = 0; i < userChoice.length; i++) {
     userChoice[i].addEventListener('click', function () {
-        computerChoiceImg.src = `images/${computerChoice}.png`
-        if (computerChoice === userChoice[i].id) {
-            results.innerHTML = `<div>Tie!</div>`
-            userScorediv.innerHTML = userScore;
-            computerScorediv.innerHTML = computerScore;
-        } else if ((computerChoice === "scissors" && userChoice[i].id === "paper") || (computerChoice === "rock" && userChoice[i].id === "scissors") || (computerChoice === "paper" && userChoice[i].id === "rock")) {
-            results.innerHTML = `<div>Computer won!</div>`
-            computerScore++;
-            computerScorediv.innerHTML = computerScore;
-        } else {
-            results.innerHTML = `<div>You won!</div>`
-            userScore++;
-            userScorediv.innerHTML = userScore;
-        }
-        rounds++;
+        computerChoiceImg.removeAttribute('src')
+
+        setTimeout(function () {
+
+            computerChoiceImg.src = `images/${computerChoice}.png`
+            if (computerChoice === userChoice[i].id) {
+                results.innerHTML = `<div>Tie!</div>`
+                userScorediv.innerHTML = userScore;
+                computerScorediv.innerHTML = computerScore;
+            } else if ((computerChoice === "scissors" && userChoice[i].id === "paper") || (computerChoice === "rock" && userChoice[i].id === "scissors") || (computerChoice === "paper" && userChoice[i].id === "rock")) {
+                results.innerHTML = `<div>Computer won!</div>`
+                computerScore++;
+                computerScorediv.innerHTML = computerScore;
+            } else {
+                results.innerHTML = `<div>You won!</div>`
+                userScore++;
+                userScorediv.innerHTML = userScore;
+            }
+            rounds++;
+        }, 500)
         if (rounds === 10) {
+            let winner;
             container.style.pointerEvents = 'none';
             setTimeout(function () {
-                alert('Game over!')
-                rounds = 0;
+                function whoWon() {
+                    if (userScore > computerScore) {
+                        winner = "User won!"
+                    } else if (userScore === computerScore) {
+                        winner = "Tie!!"
+                    } else {
+                        winner = "Computer won!"
+                    }
+                    return winner;
+                }
+                alert(whoWon())
+                rounds = 1;
                 results.innerHTML = ``
                 computerScore = 0;
                 userScore = 0;
                 userScorediv.innerHTML = userScore;
                 computerScorediv.innerHTML = computerScore;
                 container.style.pointerEvents = '';
-            }, 500)
+                computerChoiceImg.removeAttribute('src')
+            }, 1000)
         }
         computerChoice = items[Math.floor(Math.random() * 3)];
     })
