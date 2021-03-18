@@ -28,11 +28,11 @@ for (let i = 0; i < userChoice.length; i++) {
                 userScorediv.innerHTML = userScore;
                 computerScorediv.innerHTML = computerScore;
             } else if ((computerChoice === "scissors" && userChoice[i].id === "paper") || (computerChoice === "rock" && userChoice[i].id === "scissors") || (computerChoice === "paper" && userChoice[i].id === "rock")) {
-                results.innerHTML = `<div>Computer won!</div>`
+                results.innerHTML = `<div>Computer won this round!</div>`
                 computerScore++;
                 computerScorediv.innerHTML = computerScore;
             } else {
-                results.innerHTML = `<div>You won!</div>`
+                results.innerHTML = `<div>You won this round!</div>`
                 userScore++;
                 userScorediv.innerHTML = userScore;
             }
@@ -44,11 +44,11 @@ for (let i = 0; i < userChoice.length; i++) {
             setTimeout(function () {
                 function whoWon() {
                     if (userScore > computerScore) {
-                        winner = "User won!"
+                        winner = "User won the game!"
                     } else if (userScore === computerScore) {
                         winner = "Tie!!"
                     } else {
-                        winner = "Computer won!"
+                        winner = "Computer won the game!"
                     }
                     return winner;
                 }
