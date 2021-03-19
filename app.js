@@ -6,7 +6,6 @@ const userScorediv = document.querySelector('.user-score')
 const computerScorediv = document.querySelector('.computer-score')
 const computerChoiceImg = document.querySelector('#computerChoice')
 const container = document.querySelector('.container')
-
 let userScore = 0;
 let computerScore = 0;
 userScorediv.innerHTML = userScore;
@@ -15,13 +14,11 @@ const userChoice = [rock, paper, scissors]
 let items = ["rock", "paper", "scissors"];
 let computerChoice = items[Math.floor(Math.random() * 3)];
 let rounds = 1;
-
 for (let i = 0; i < userChoice.length; i++) {
     userChoice[i].addEventListener('click', function () {
         computerChoiceImg.removeAttribute('src')
-
+        container.style.pointerEvents = 'none';
         setTimeout(function () {
-
             computerChoiceImg.src = `images/${computerChoice}.png`
             if (computerChoice === userChoice[i].id) {
                 results.innerHTML = `<div>Tie!</div>`
@@ -37,6 +34,8 @@ for (let i = 0; i < userChoice.length; i++) {
                 userScorediv.innerHTML = userScore;
             }
             rounds++;
+            container.style.pointerEvents = '';
+
         }, 500)
         if (rounds === 10) {
             let winner;
