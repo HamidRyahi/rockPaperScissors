@@ -35,9 +35,8 @@ for (let i = 0; i < userChoice.length; i++) {
             }
             rounds++;
             container.style.pointerEvents = '';
-
         }, 500)
-        if (rounds === 10) {
+        if (rounds === 3) {
             let winner;
             container.style.pointerEvents = 'none';
             setTimeout(function () {
@@ -52,6 +51,7 @@ for (let i = 0; i < userChoice.length; i++) {
                     return winner;
                 }
                 alert(whoWon())
+                computerChoiceImg.removeAttribute('src')
                 rounds = 1;
                 results.innerHTML = ``
                 computerScore = 0;
@@ -59,9 +59,9 @@ for (let i = 0; i < userChoice.length; i++) {
                 userScorediv.innerHTML = userScore;
                 computerScorediv.innerHTML = computerScore;
                 container.style.pointerEvents = '';
-                computerChoiceImg.removeAttribute('src')
             }, 1000)
         }
+        computerChoiceImg.removeAttribute('src')
         computerChoice = items[Math.floor(Math.random() * 3)];
     })
 }
