@@ -4,32 +4,52 @@
 <head>
     <title>Rock Paper Scissors</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
-<body>
-    <h2>Your choice:</h2>
-    <div class="container">
-        <img id="rock" src="images/rock.png">
-        <img id="paper" src="images/paper.png">
-        <img id="scissors" src="images/scissors.png">
+<body id="body">
+    <div id="modal">
+        <h1 id="message"></h1>
+        <p id="result-score"></p>
+        <button id="restart">Play again?</button>
     </div>
-    <h2>Computer choice:</h2>
-    <div class="computerChoice">
-        <img id="computerChoice">
-    </div>
-    <div class="results">
-
-    </div><br><br>
-    <div class="score">
-        <div>
-            User: <span class="user-score"></span>
+    <div class="main-container">
+        <div class="header">
+            <h1>ROUND <span id="round-counter"></span></h1>
         </div>
-        <div>
-            Computer: <span class="computer-score"></span>
+        <div class="user-container">
+            <p class="pick">Take your pick</p>
+            <div class="user-choices">
+                <img id="rock" src="images/rock.png">
+                <img id="paper" src="images/paper.png">
+                <img id="scissors" src="images/scissors.png">
+            </div>
+            <div class="section-header">
+                <h4>YOUR SCORE</h4>
+                <ul id="user-rating">
+                </ul>
+            </div>
+        </div>
+        <div class="computer-container">
+            <p class="pick">Computer made a pick</p>
+            <div>
+                <img id="computer-choice" src="images/check.png">
+            </div>
+            <div class="section-header">
+                <h4>COMPUTER'S SCORE</h4>
+                <ul id="computer-rating">
+                </ul>
+            </div>
+        </div>
+        <div id="result">
+            <h3 id="result-text">
+                </h2>
         </div>
     </div>
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
